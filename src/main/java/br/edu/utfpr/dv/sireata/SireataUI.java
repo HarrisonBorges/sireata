@@ -26,14 +26,14 @@ import br.edu.utfpr.dv.sireata.view.UsuarioView;
 @Theme("facebook")
 public class SireataUI extends UI {
 
-	@WebServlet(value = "/*", asyncSupported = true)
-	@VaadinServletConfiguration(productionMode = false, ui = SireataUI.class)
-	public static class Servlet extends VaadinServlet {
-	}
+    @WebServlet(value = "/*", asyncSupported = true)
+    @VaadinServletConfiguration(productionMode = false, ui = SireataUI.class)
+    public static class Servlet extends VaadinServlet {
+    }
 
-	@Override
-	protected void init(VaadinRequest request) {
-		//
+    @Override
+    protected void init(VaadinRequest request) {
+        //
         // Create a new instance of the navigator. The navigator will attach
         // itself automatically to this view.
         //
@@ -48,7 +48,7 @@ public class SireataUI extends UI {
         getNavigator().addView(AtaView.NAME, AtaView.class);
         getNavigator().addView(AtaPublicadaView.NAME, AtaPublicadaView.class);
         getNavigator().addView(PDFView.NAME, PDFView.class);
-        
+
         //
         // We use a view change handler to ensure the user is always redirected
         // to the login view if the user is not logged in.
@@ -63,7 +63,7 @@ public class SireataUI extends UI {
                 boolean isLoginView = event.getNewView() instanceof LoginView;
                 boolean isMainView = event.getNewView() instanceof MainView;
                 boolean isAtaPublicadaView = event.getNewView() instanceof AtaPublicadaView;
-                
+
                 if (!isLoggedIn && !isLoginView && !isAtaPublicadaView) {
                     // Redirect to login view always if a user has not yet
                     // logged in
@@ -73,8 +73,8 @@ public class SireataUI extends UI {
                     // If someone tries to access to login view while logged in,
                     // then cancel
                     return true;
-                } else if(!isMainView && !isLoginView) {
-                	return true;
+                } else if (!isMainView && !isLoginView) {
+                    return true;
                 }
 
                 return true;
@@ -82,9 +82,9 @@ public class SireataUI extends UI {
 
             @Override
             public void afterViewChange(ViewChangeEvent event) {
-            	Page.getCurrent().setTitle("SIREATA - Sistema de Registro de Atas");
+                Page.getCurrent().setTitle("SIREATA - Sistema de Registro de Atas");
             }
         });
-	}
+    }
 
 }
